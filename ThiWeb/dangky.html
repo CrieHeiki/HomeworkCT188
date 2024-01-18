@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Thành Viên</title>
+    <link rel="stylesheet" href="/fontawesome-free-5.15.4-web/">
+    <style>
+        body {
+            width: 1024px;
+            font-family: Helvetica, arial, sans-serif;
+        }
+
+        header {
+            height: 100px;
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+            background-image: linear-gradient(purple, pink, red); 
+        }
+
+        button:hover {
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .nav-home {
+            color: black;
+            background-color: yellow;
+            padding: 4px;
+            margin-right: 4px;
+            border: 1px solid #666;
+            border-radius: 2px;
+        }
+
+        .nav-home:hover {
+            cursor: pointer;
+            background-color: yellowgreen;
+            border: 2px solid #666;
+            border-radius: 2px;
+        }
+        .nav {
+            color: red;
+            background-color: wheat;
+            padding: 4px;
+            margin-right: 4px;
+            border: 1px solid #666;
+            border-radius: 2px;
+        }
+
+        .nav:hover {
+            cursor: pointer;
+            background-color: pink;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-size: 25px;
+            text-align: center;
+        }
+         h2 {
+             text-transform: uppercase;
+             font-size: 20;
+             text-align: center;
+         }
+
+        .header-inputt {
+            position: relative;
+            margin-left: 8px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .col-1-1 {
+            display: grid;
+            grid-template-columns: 49% 49%;
+            grid-gap: 10px;
+        }
+
+        .person-info1,
+        .person-info2 {
+            border: 2px solid palevioletred;
+            border-radius: 5px;
+        }
+        table {
+            margin-left: 20px;
+        }
+
+        footer {
+            margin-top: 2px;
+            border: 2px solid palevioletred;
+            border-radius: 5px;
+            height: 70px;
+        } 
+        
+        .footer-info {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        fieldset {
+            margin-top: 20px;
+            border: 2px solid palevioletred;
+            border-radius: 5px;
+        }
+
+        form > div {
+            margin-bottom: 14px;
+        }
+    </style>
+
+    <script>
+        
+function validateForm() {
+
+    var fname = document.getElementById("fname").value;
+    var myIMG = document.getElementById('upload');
+    var gendermale = document.getElementById('male');
+    var genderfemale = document.getElementById('female');
+    var selected = document.getElementById('select')
+    var personinfo = document.getElementById('person-info');
+    var rules = document.getElementById('accept');
+
+    if (fname < 4) {
+        alert("Họ tên có ít nhất 4 kí tự");
+        return false;
+    } 
+    
+    if(myIMG.files.length == 0){
+        alert("Vui lòng chọn ảnh đại diện");
+        return false;
+    }
+
+    if (!gendermale.checked && !genderfemale.checked) {
+        alert('Vui lòng chọn giới tính')       
+        return false;
+    }
+
+    if (selected.value == 0) {
+        alert ('Vui lòng chọn loại thành viên')
+        return false;
+    } 
+
+    if (personinfo.value == 0) {
+        alert('Vui lòng nhập mô tả bản thân');
+        return false;
+    }
+
+    if (!rules.checked) {
+        alert('Vui lòng đánh dấu vào Các điều khoản');
+       return false;
+    } 
+   
+}   
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-inputt">
+            <input type="text" name="header-input" id="header-input" placeholder="Nội dung cần tìm...">
+            <button>Tìm</button>
+        </div>
+        <div>
+            <a class="nav" href="dangky.html">
+                Đăng Ký Thành Viên
+            </a>
+            <a class="nav" href="sanpham.html">
+                Vật Phẩm Lưu Niệm
+            </a>
+            <a class="nav-home" href="trangchu.html">
+                Trang chủ
+            </a>
+        </div>
+    </header>
+    <main>
+        <fieldset>
+            <form action="" name="contactForm" onsubmit="return validateForm()" method="get">
+                <h1>đăng ký thành viên</h1>
+
+                <div>
+                    <label for="fname">Họ Tên </label>
+                    <input type="text" name="fname" id="fname">
+                </div>
+
+                <div>
+                    Ảnh Đại Diện: (chỉ chấp nhận tập tin ảnh):
+                    <input name="file[]" type="file" multiple="multiple" id="upload" accept="image/*">
+                </div>
+                
+                <div>
+                    Giới tính:                       
+                    <input type="radio" name="gender" id="male">Nam
+                    <input type="radio" name="gender"id="female">Nữ
+                </div>
+                
+                <div>
+                    Loại Thành Viên: 
+                    <select name="member-level" id="select" >
+                        <option value="">-Chọn Loại Thành Viên-</option>
+                        <option id="blue" value="blue">Xanh</option>
+                        <option id="red" value="red">Đỏ</option>
+                        <option id="yellow" value="yellow">Vàng</option>
+                    </select>   
+                </div>
+                
+                <div>
+                    <label for="person-info">Mô tả bản thân: </label> <br>
+                        <textarea name="person-info" id="person-info" cols="30" rows="10">
+                        </textarea>  
+                </div>
+
+                <div>
+                    <label for="accept"></label>
+                    <input type="checkbox" name="accept" id="accept"> 
+                    Tôi đã hiểu và chấp nhận điều khoản.
+                </div>
+                <button type="submit">Đăng Ký</button>      
+            </form>
+        </fieldset>
+    </main>
+    <footer>
+        <div class="footer-info">
+            © 2021 Bảng quyền thuộc về <b>Phạm Thị Cà Vui</b>
+        </div>
+    </footer>
+</body>
+</html>
